@@ -1,15 +1,12 @@
 import React from 'react';
-import { Text, Button } from "react-native";
+import { Text, Button } from 'react-native';
 import { ScreenContainer } from '../../../../components';
 
-const Landing = () => {
-
-  return (
-    <ScreenContainer>
-      <Text>Imerse in seamless Chore app system</Text>
-      <Button title="Get Started" onPress={() => alert('Todo')} />
-    </ScreenContainer>
-  )
-};
+const Landing = ({ navigation }) => (
+  <ScreenContainer>
+    <Text>Imerse in seamless Chore app system</Text>
+    <Button title="Get Started" onPress={() => navigation.push('Login')} />
+  </ScreenContainer>
+);
 
 export default Landing;
