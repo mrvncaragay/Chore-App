@@ -1,11 +1,24 @@
 import React from 'react';
-import { Text, Button } from 'react-native';
+import { Button, Text } from 'react-native-elements'; 
 import { ScreenContainer } from '../../../../components';
+import styles from './styles';
 
 const Landing = ({ navigation }) => (
-  <ScreenContainer>
-    <Text>Imerse in seamless Chore app system</Text>
-    <Button title="Get Started" onPress={() => navigation.push('Login')} />
+  <ScreenContainer style={styles.root}> 
+    <ScreenContainer style={styles.intro}>
+      <Text style={styles.text}>Immerse in a seamless Chore App system</Text>
+      <Text style={styles.text}>We promise that you'll have the most fuss-free time with us ever.</Text>
+    </ScreenContainer>
+
+    <ScreenContainer style={styles.getStarted}>
+      <Button 
+        type="outline" 
+        title="Get Started"
+        buttonStyle={styles.btn}
+        containerStyle={styles.btnContainer}
+        onPress={() => navigation.push('Login')} 
+      />
+    </ScreenContainer>
   </ScreenContainer>
 );
 
