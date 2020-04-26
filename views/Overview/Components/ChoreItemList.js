@@ -9,7 +9,7 @@ const ChoreItemList = (props) => {
       <ChoreItem />
 
     </ScrollView>
-  )
-}
+  );
+};
 
 export default ChoreItemList;
