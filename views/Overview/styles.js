@@ -5,8 +5,10 @@ const circleDiameter = 120;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     width: '100%',
+    paddingTop: 120,
+    paddingRight: 150,
   },
   circle: {
     height: circleDiameter,
@@ -23,6 +25,17 @@ const styles = StyleSheet.create({
   },
   body: {
     fontSize: 14,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(240,240,240,0.7)',
+    borderRadius: circleDiameter,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  check: {
+    fontSize: 50,
+    color: '#333333',
   },
 });
 
