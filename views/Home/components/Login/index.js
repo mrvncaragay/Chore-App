@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import {
   Alert, View, Text, TextInput, TouchableHighlight,
 } from 'react-native';
+import { connect } from 'react-redux';
+import { loginAction } from '../../../../redux/actions/loginAction';
 import styles from './styles';
+import { ScreenContainer } from '../../../../components';
+import store from '../../../../redux/store/store';
 
-const Login = ({ navigation }) => {
+const Login = ({ loginAction, navigation }) => {
   const [login, setLogin] = useState({
     email: '',
     password: '',
@@ -18,9 +22,9 @@ const Login = ({ navigation }) => {
   const onClick = (viewId) => {
     Alert.alert('Alert', `Button pressed ${viewId}`);
   };
-  console.log(login);
+
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       <View>
         <Text style={styles.text}>Email</Text>
         <TextInput
@@ -41,14 +45,18 @@ const Login = ({ navigation }) => {
           onChangeText={(value) => handleInput('password', value)}
         />
       </View>
-      <TouchableHighlight style={styles.buttonContainer} onPress={navigation.goBack}>
+      <TouchableHighlight style={styles.buttonContainer} onPress={loginAction}>
         <Text style={styles.text}>Login</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => onClick('reset password')}>
         <Text style={styles.text}>Forgot your password?</Text>
       </TouchableHighlight>
-    </View>
+    </ScreenContainer>
   );
 };
 
-export default Login;
+const mapStateToProps = state => ({
+  logins: state.logins,
+});
+
+export default connect(mapStateToProps, { loginAction })(Login);
