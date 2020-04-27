@@ -6,8 +6,7 @@ import Overview from '../Overview';
 
 const Navigation = () => (
   <NavigationContainer>
-    {/* <Home /> */}
-    <Overview />
+    <Home />
   </NavigationContainer>
 );
 

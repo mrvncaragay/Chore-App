@@ -5,10 +5,8 @@ const circleDiameter = 120;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '100%',
-    paddingTop: 120,
-    paddingRight: 150,
   },
   circle: {
     height: circleDiameter,
