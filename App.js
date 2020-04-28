@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
-
-import { Provider } from 'react-redux';
-import store from './redux/store/store';
+import { Text } from "react-native";
+import { Provider } from "react-redux";
+import store from "./redux/store/store";
 
 import { Login, Landing } from "./screens";
 
 const Home = createStackNavigator();
 
 export default function App() {
-  const [signedIn] = useState(true);
+  const [signedIn] = useState(false);
 
   const HomeStack = () => (
     <Home.Navigator screenOptions={{
@@ -27,8 +27,9 @@ export default function App() {
 
   return (
     <Provider store={store}>
+      {console.log(store.getState())}
       <NavigationContainer>
-        { signedIn ? <>Overview Component</> : <HomeStack />}
+        { signedIn ? <Text>Overview Component</Text> : <HomeStack />}
       </NavigationContainer>
     </Provider>
   );
