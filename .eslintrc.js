@@ -23,6 +23,10 @@ module.exports = {
     'react',
   ],
   rules: {
+    "linebreak-style": 0,
+    "comma-dangle": ["error", "never"],
+    "react/prop-types": 0,
+    "quotes": ["error", "double"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   parser: 'babel-eslint',
