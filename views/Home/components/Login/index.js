@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { loginAction } from '../../../../redux/actions/loginAction';
 import styles from './styles';
 import { ScreenContainer } from '../../../../components';
-import store from '../../../../redux/store/store';
 
 const Login = ({ loginAction, navigation }) => {
   const [login, setLogin] = useState({
@@ -55,8 +54,13 @@ const Login = ({ loginAction, navigation }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   logins: state.logins,
 });
 
-export default connect(mapStateToProps, { loginAction })(Login);
+const mapDispachToProps = (dispatch) => ({
+  loginAction: () => dispatch({ type: 'LOGIN_ACTION', payload: true }),
+});
+
+
+export default connect(mapStateToProps, mapDispachToProps)(Login);

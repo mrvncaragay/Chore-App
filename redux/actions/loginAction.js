@@ -4,6 +4,6 @@ import initialState from '../store/initial';
 export const loginAction = () => (dispatch) => {
   dispatch({
     type: LOGIN_ACTION,
-    payload: !initialState.isLoggedIn,
+    payload: true,
   });
 };
