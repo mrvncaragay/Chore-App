@@ -1,39 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-  Alert, Text, TextInput, TouchableHighlight,
-} from 'react-native';
-import { ScreenContainer } from '../../../../components';
+  Alert, Text, View, TextInput, TouchableHighlight
+} from "react-native";
+import { connect } from "react-redux";
+import styles from "./styles";
+import { ScreenContainer } from "../../../../components";
 
-const Login = ({ navigation }) => {
+import {
+  emailSignInStart
+} from "../../../../redux/user/userActions";
+
+const Login = ({ emailSignInStart }) => {
   const [login, setLogin] = useState({
-    username: '',
-    email: '',
-    password: '',
+    email: "",
+    password: ""
   });
 
-  const onClick = (viewId) => {
-    Alert.alert('Alert', `Button pressed ${viewId}`);
+  const handleInput = (name, input) => {
+    setLogin((previousState) => ({
+      ...previousState,
+      [name]: input
+    }));
   };
+
+  const onClick = (viewId) => {
+    Alert.alert("Alert", `Button pressed ${viewId}`);
+  };
+
   return (
     <ScreenContainer>
-      <Text>Email</Text>
-      <TextInput
-        placeholder="Email"
-        keyboardType="email-address"
-        onChange={(email) => setLogin({ email })}
-      />
-      <Text>Password</Text>
-      <TextInput
-        placeholder="Password"
-        secureTextEntry
-        onChange={(password) => setLogin({ password })}
-      />
-
-      <TouchableHighlight onPress={navigation.goBack}>
-        <Text>Login</Text>
+      <View>
+        <Text style={styles.text}>Email</Text>
+        <TextInput
+          placeholder="Email"
+          keyboardType="email-address"
+          value={login.username}
+          style={styles.input}
+          onChangeText={(value) => handleInput("email", value)}
+        />
+      </View>
+      <View>
+        <Text style={styles.text}>Password</Text>
+        <TextInput
+          placeholder="Password"
+          secureTextEntry
+          value={login.password}
+          style={styles.input}
+          onChangeText={(value) => handleInput("password", value)}
+        />
+      </View>
+      <TouchableHighlight style={styles.buttonContainer} onPress={emailSignInStart}>
+        <Text style={styles.text}>Login</Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => onClick("reset password")}>
+        <Text style={styles.text}>Forgot your password?</Text>
       </TouchableHighlight>
     </ScreenContainer>
   );
 };
 
-export default Login;
+export default connect(null, { emailSignInStart })(Login);

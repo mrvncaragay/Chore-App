@@ -1,14 +1,16 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { Navigation } from './views';
-import store from './redux/store/store';
+import React from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
 
+import ChoreApp from "./ChoreApp";
 
-export default function App() {
-  return (
-    <Provider store={store}>
-      {/* {console.log(store.getState().logins.isLoggedIn)} */}
-      <Navigation />
-    </Provider>
-  );
-}
+const App = () => (
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <ChoreApp />
+    </PersistGate>
+  </Provider>
+);
+
+export default App;
